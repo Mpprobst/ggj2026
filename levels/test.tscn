@@ -2,12 +2,19 @@
 
 [ext_resource type="Texture2D" uid="uid://ckxsht1gin8yh" path="res://sprites/white1080.png" id="1_72lju"]
 [ext_resource type="Script" uid="uid://cwabhsf4ic5as" path="res://scripts/player_controller.gd" id="2_lkjt4"]
+[ext_resource type="Script" uid="uid://1j2uf2jfdflt" path="res://scripts/paintable_surface.gd" id="2_r4e4k"]
 [ext_resource type="PackedScene" uid="uid://dnieuv4tyuodq" path="res://prefabs/tape.tscn" id="3_ny0t1"]
 
 [node name="Test" type="Node2D" unique_id=1559331907]
 
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1952142637]
+
 [node name="Background" type="Sprite2D" parent="." unique_id=581191951]
 texture = ExtResource("1_72lju")
+
+[node name="Canvas" type="Sprite2D" parent="." unique_id=543270012 node_paths=PackedStringArray("painted_tex")]
+script = ExtResource("2_r4e4k")
+painted_tex = NodePath(".")
 
 [node name="PlayerController" type="Node2D" parent="." unique_id=937662677 node_paths=PackedStringArray("tape_container")]
 script = ExtResource("2_lkjt4")
