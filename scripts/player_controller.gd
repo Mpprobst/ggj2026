@@ -2,13 +2,10 @@ extends Node2D
 
 @export var tape_prefab : PackedScene
 @export var tape_container : Node2D
+@export var paint_manager : PaintManager
 
 var drawing : bool
 var active_tape : Tape
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -22,7 +19,8 @@ func _input(event):
 			active_tape = tape_prefab.instantiate()
 			tape_container.add_child(active_tape)
 			active_tape.global_position = pos
+			paint_manager.on_add_tape(active_tape)
 			drawing = true
 		else:
-			# release dragged node
 			drawing = false
+	
