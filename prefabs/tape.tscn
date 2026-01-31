@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dnieuv4tyuodq"]
+
+[ext_resource type="Script" uid="uid://bf8ykw7gmoo67" path="res://scripts/tape.gd" id="1_7wm2w"]
+
+[node name="Tape" type="Node2D" unique_id=807806537]
+script = ExtResource("1_7wm2w")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=458287682]
+points = PackedVector2Array(0, 0, 100, 0)
+width = 50.0
+default_color = Color(0, 0, 1, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=99026061]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1864371126]
+
+[connection signal="input_event" from="Area2D" to="." method="_on_click"]

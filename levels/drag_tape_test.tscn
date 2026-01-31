@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://ded3lc33b322y"]
 
-[ext_resource type="Texture2D" uid="uid://ckxsht1gin8yh" path="res://white1080.png" id="1_8uh7m"]
-[ext_resource type="Texture2D" uid="uid://3bktq2lj7bjc" path="res://tape.png" id="2_6uqi0"]
-[ext_resource type="Script" uid="uid://bb45ank3axtsa" path="res://tape.gd" id="2_ppyta"]
+[ext_resource type="Texture2D" uid="uid://ckxsht1gin8yh" path="res://sprites/white1080.png" id="1_3q8kq"]
+[ext_resource type="Script" uid="uid://bb45ank3axtsa" path="res://scripts/draggable_polygon.gd" id="2_uhgwp"]
+[ext_resource type="Texture2D" uid="uid://3bktq2lj7bjc" path="res://tape.png" id="3_6mexg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ppyta"]
 
@@ -12,17 +12,17 @@
 zoom = Vector2(0.5, 0.5)
 
 [node name="Background" type="Sprite2D" parent="." unique_id=538602477]
-texture = ExtResource("1_8uh7m")
+texture = ExtResource("1_3q8kq")
 
 [node name="Tape" type="Node2D" parent="." unique_id=619221306 node_paths=PackedStringArray("collision", "contactPoints", "bones")]
-script = ExtResource("2_ppyta")
+script = ExtResource("2_uhgwp")
 collision = NodePath("Area2D/CollisionPolygon2D")
 contactPoints = [NodePath("0"), NodePath("1"), NodePath("3"), NodePath("2")]
 bones = [NodePath("Skeleton2D/Bone0"), NodePath("Skeleton2D/Bone1"), NodePath("Skeleton2D/Bone3"), NodePath("Skeleton2D/Bone2")]
 
 [node name="Sprite2D" type="Polygon2D" parent="Tape" unique_id=1953559103]
 color = Color(1, 0, 0, 1)
-texture = ExtResource("2_6uqi0")
+texture = ExtResource("3_6mexg")
 skeleton = NodePath("../Skeleton2D")
 polygon = PackedVector2Array(-540, -64, -540, 64, 540, 64, 540, -64)
 uv = PackedVector2Array(-540, -64, -540, 64, 540, 64, 540, -64)

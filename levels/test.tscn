@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://ctqqt41poucos"]
+
+[ext_resource type="Texture2D" uid="uid://ckxsht1gin8yh" path="res://sprites/white1080.png" id="1_72lju"]
+[ext_resource type="Script" uid="uid://cwabhsf4ic5as" path="res://scripts/player_controller.gd" id="2_lkjt4"]
+[ext_resource type="PackedScene" uid="uid://dnieuv4tyuodq" path="res://prefabs/tape.tscn" id="3_ny0t1"]
+
+[node name="Test" type="Node2D" unique_id=1559331907]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=581191951]
+texture = ExtResource("1_72lju")
+
+[node name="PlayerController" type="Node2D" parent="." unique_id=937662677 node_paths=PackedStringArray("tape_container")]
+script = ExtResource("2_lkjt4")
+tape_prefab = ExtResource("3_ny0t1")
+tape_container = NodePath("../TapeContainer")
+
+[node name="TapeContainer" type="Node2D" parent="." unique_id=282103972]
