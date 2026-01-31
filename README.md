@@ -11,6 +11,7 @@ The wall is automatically painted by brushes with predetermined paths. The playe
 
 ### Automatic Paint
 - must be able to apply color to an overlay texture over time. writing pixels to an image file most likely
+- must use masking tape as a mask for the paint
 - predetermined paths for paintbrushes
 - a percentage of correctness must be calclulate by comparing a goal texture to the painted texture
 
