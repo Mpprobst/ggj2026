@@ -1,0 +1,156 @@
+[gd_scene format=3 uid="uid://ded3lc33b322y"]
+
+[ext_resource type="Texture2D" uid="uid://ckxsht1gin8yh" path="res://white1080.png" id="1_8uh7m"]
+[ext_resource type="Texture2D" uid="uid://3bktq2lj7bjc" path="res://tape.png" id="2_6uqi0"]
+[ext_resource type="Script" uid="uid://bb45ank3axtsa" path="res://tape.gd" id="2_ppyta"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppyta"]
+
+[node name="Node2D" type="Node2D" unique_id=1229998753]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=384006032]
+zoom = Vector2(0.5, 0.5)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=538602477]
+texture = ExtResource("1_8uh7m")
+
+[node name="Tape" type="Node2D" parent="." unique_id=619221306 node_paths=PackedStringArray("collision", "contactPoints", "bones")]
+script = ExtResource("2_ppyta")
+collision = NodePath("Area2D/CollisionPolygon2D")
+contactPoints = [NodePath("0"), NodePath("1"), NodePath("3"), NodePath("2")]
+bones = [NodePath("Skeleton2D/Bone0"), NodePath("Skeleton2D/Bone1"), NodePath("Skeleton2D/Bone3"), NodePath("Skeleton2D/Bone2")]
+
+[node name="Sprite2D" type="Polygon2D" parent="Tape" unique_id=1953559103]
+color = Color(1, 0, 0, 1)
+texture = ExtResource("2_6uqi0")
+skeleton = NodePath("../Skeleton2D")
+polygon = PackedVector2Array(-540, -64, -540, 64, 540, 64, 540, -64)
+uv = PackedVector2Array(-540, -64, -540, 64, 540, 64, 540, -64)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+bones = ["Bone0", PackedFloat32Array(0, 0, 0, 0.5), "Bone1", PackedFloat32Array(0, 0, 0.5, 0), "Bone2", PackedFloat32Array(0.5, 0, 0, 0), "Bone3", PackedFloat32Array(0, 0.5, 0, 0)]
+
+[node name="0" type="RigidBody2D" parent="Tape" unique_id=1685141357]
+position = Vector2(530, -54)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tape/0" unique_id=1967231572]
+shape = SubResource("CircleShape2D_ppyta")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Tape/0" unique_id=514566510]
+node_a = NodePath("..")
+node_b = NodePath("../../1")
+length = 108.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="Tape/0" unique_id=1973930622]
+rotation = 1.5707964
+node_a = NodePath("..")
+node_b = NodePath("../../2")
+length = 1060.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="Tape/0" unique_id=1278308187]
+rotation = 1.4695672
+node_a = NodePath("..")
+node_b = NodePath("../../3")
+length = 1065.0
+
+[node name="1" type="RigidBody2D" parent="Tape" unique_id=1524492742]
+position = Vector2(530, 54)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tape/1" unique_id=552748608]
+shape = SubResource("CircleShape2D_ppyta")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Tape/1" unique_id=525979991]
+rotation = 1.6720254
+node_a = NodePath("..")
+node_b = NodePath("../../0")
+length = 1065.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="Tape/1" unique_id=194812506]
+rotation = 3.1415927
+node_a = NodePath("..")
+node_b = NodePath("../../2")
+length = 108.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="Tape/1" unique_id=1001499120]
+rotation = 1.5707964
+node_a = NodePath("..")
+node_b = NodePath("../../3")
+length = 1060.0
+
+[node name="2" type="RigidBody2D" parent="Tape" unique_id=277068184]
+position = Vector2(-530, -54)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tape/2" unique_id=2146585547]
+shape = SubResource("CircleShape2D_ppyta")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Tape/2" unique_id=21312600]
+rotation = 4.712389
+node_a = NodePath("..")
+node_b = NodePath("../../0")
+length = 1060.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="Tape/2" unique_id=1380327321]
+rotation = 4.813618
+node_a = NodePath("..")
+node_b = NodePath("../../1")
+length = 1065.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="Tape/2" unique_id=153866832]
+node_a = NodePath("..")
+node_b = NodePath("../../3")
+length = 108.0
+
+[node name="3" type="RigidBody2D" parent="Tape" unique_id=1440528493]
+position = Vector2(-530, 54)
+gravity_scale = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tape/3" unique_id=433186053]
+shape = SubResource("CircleShape2D_ppyta")
+
+[node name="DampedSpringJoint2D" type="DampedSpringJoint2D" parent="Tape/3" unique_id=232472890]
+rotation = -1.6720254
+node_a = NodePath("..")
+node_b = NodePath("../../0")
+length = 1065.0
+
+[node name="DampedSpringJoint2D2" type="DampedSpringJoint2D" parent="Tape/3" unique_id=547029354]
+rotation = -3.1415927
+node_a = NodePath("..")
+node_b = NodePath("../../1")
+length = 108.0
+
+[node name="DampedSpringJoint2D3" type="DampedSpringJoint2D" parent="Tape/3" unique_id=442978194]
+rotation = -1.5707964
+node_a = NodePath("..")
+node_b = NodePath("../../2")
+length = 1060.0
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Tape" unique_id=1759624475]
+
+[node name="Bone0" type="Bone2D" parent="Tape/Skeleton2D" unique_id=562246794]
+position = Vector2(530, -54)
+rotation = 2.3561945
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(-0.70710677, 0.70710677, -0.70710677, -0.70710677, 530, -54)
+
+[node name="Bone1" type="Bone2D" parent="Tape/Skeleton2D" unique_id=1339960019]
+position = Vector2(530, 54)
+rotation = 1.5707964
+rest = Transform2D(-4.371139e-08, 1, -1, -4.371139e-08, 530, 54)
+
+[node name="Bone2" type="Bone2D" parent="Tape/Skeleton2D" unique_id=183587521]
+position = Vector2(-530, -54)
+rotation = -0.7853982
+scale = Vector2(0.9999999, 0.9999999)
+rest = Transform2D(0.707, -0.707, 0.707, 0.707, -530, -54)
+
+[node name="Bone3" type="Bone2D" parent="Tape/Skeleton2D" unique_id=991784118]
+position = Vector2(-530, 54)
+rest = Transform2D(1, 0, 0, 1, -530, 54)
+
+[node name="Area2D" type="Area2D" parent="Tape" unique_id=28178684]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Tape/Area2D" unique_id=1466456790]
+polygon = PackedVector2Array(-500, 50, 500, 50, 500, -50, -500, -50)
