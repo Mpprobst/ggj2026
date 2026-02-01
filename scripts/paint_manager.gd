@@ -96,7 +96,7 @@ func calculate_score():
 			var diff = c1.r - c2.r + c1.g - c2.g + c1.b - c2.b
 			if abs(diff) < 0.1:
 				ct += 1
-	var goal_ct = raw.get_width() * raw.get_height()
+	var goal_ct = canvas.pixel_count()
 	var percent = float(ct) / float(goal_ct) * 100.0
 	level_complete.emit(percent)
 	tape_reminder.visible = false
