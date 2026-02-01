@@ -14,13 +14,13 @@ func _process(delta):
 
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
+		if event.pressed and not drawing:
 			var pos = get_global_mouse_position()
 			active_tape = tape_prefab.instantiate()
 			tape_container.add_child(active_tape)
 			active_tape.global_position = pos
-			paint_manager.on_add_tape(active_tape)
 			drawing = true
 		else:
+			paint_manager.on_add_tape(active_tape)
 			drawing = false
 	

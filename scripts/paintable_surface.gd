@@ -5,6 +5,7 @@ const GRID_SIZE = 512
 @export var painted_tex : Sprite2D
 
 var img : Image
+var mask : Image
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,7 +33,12 @@ func paint(rect : Rect2, color):
 			x = rect.position.x + i
 			y = rect.position.y + j
 			if x >= 0 and x < img.get_width() and y >= 0 and y < img.get_height():
-				img.set_pixel(x, y, color)
+				var tint = Color.WHITE
+				if mask != null:
+					tint = mask.get_pixel(x,y)
+				img.set_pixel(x, y, color * tint)
 				
 	painted_tex.texture.update(img)
 	
+func set_mask(m):
+	mask = m

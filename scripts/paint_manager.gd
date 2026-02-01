@@ -3,6 +3,7 @@ class_name PaintManager extends Node2D
 # TODO: a texture that we draw to
 
 @export var canvas : PaintableSurface
+@export var viewport_mask : SubViewport
 
 var tapes : Array[Tape]
 
@@ -30,4 +31,18 @@ func on_remove_tape(tape: Tape):
 	recalculate_mask()
 
 func recalculate_mask():
-	pass
+	var mask = viewport_mask.get_texture().get_image()
+	for y in range(mask.get_height()):
+		for x in range(mask.get_width()):
+			var color: Color = mask.get_pixel(x, y)
+			color.r = 1.0 - color.r
+			color.g = 1.0 - color.g
+			color.b = 1.0 - color.b
+			color.a = 1.0 - color.a			
+			mask.set_pixel(x, y, color)
+
+	canvas.set_mask(mask)
+	
+	#var save_path = "C:/Users/mppro/Documents/Projects/ggj2026/test_mask.png"
+	#var error = mask.save_png(save_path)
+	print("set mask")
