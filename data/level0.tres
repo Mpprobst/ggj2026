@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://78n3gl4f5ex4" path="res://scripts/level_data.gd" id="1_b2q6w"]
 [ext_resource type="Script" uid="uid://bs753kce3wybo" path="res://scripts/brush_data.gd" id="1_hta1u"]
 [ext_resource type="Resource" uid="uid://doeauob6f1nct" path="res://data/brushes/brush_slow_red_128.tres" id="2_6i7lx"]
+[ext_resource type="Texture2D" uid="uid://dg4cu5ywtaahr" path="res://sprites/level0.png" id="3_uecdu"]
 [ext_resource type="Script" uid="uid://qjvhyw112rxr" path="res://scripts/brush_path.gd" id="3_xbuhm"]
 [ext_resource type="Resource" uid="uid://cbgqq7y7fh2oi" path="res://data/paths/snakehoriz.tres" id="4_xbuhm"]
 
 [resource]
 script = ExtResource("1_b2q6w")
+goal = ExtResource("3_uecdu")
 brushes = Array[ExtResource("1_hta1u")]([ExtResource("2_6i7lx")])
 paths = Array[ExtResource("3_xbuhm")]([ExtResource("4_xbuhm")])
 metadata/_custom_type_script = "uid://78n3gl4f5ex4"

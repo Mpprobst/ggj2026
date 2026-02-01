@@ -21,12 +21,12 @@ tape_prefab = ExtResource("3_ny0t1")
 tape_container = NodePath("../SubViewportContainer/MaskingViewport/TapeContainer")
 paint_manager = NodePath("../PaintManager")
 
-[node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask")]
-position = Vector2(-256, -256)
+[node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask", "goal_image")]
 script = ExtResource("1_pnvjf")
 canvas = NodePath("../SubViewportContainer/MainViewport/Canvas")
 viewport_mask = NodePath("../SubViewportContainer/MaskingViewport")
 brush_prefab = ExtResource("6_6g8e2")
+goal_image = NodePath("../SubViewportContainer/MainViewport/GoalImage")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=438805184]
 anchors_preset = 15
@@ -44,6 +44,10 @@ render_target_update_mode = 4
 texture = ExtResource("1_72lju")
 centered = false
 offset = Vector2(-703.16, -256)
+
+[node name="GoalImage" type="Sprite2D" parent="SubViewportContainer/MainViewport" unique_id=963508272]
+modulate = Color(1, 1, 1, 0.49019608)
+offset = Vector2(256, 256)
 
 [node name="Canvas" type="Sprite2D" parent="SubViewportContainer/MainViewport" unique_id=543270012 node_paths=PackedStringArray("painted_tex")]
 centered = false

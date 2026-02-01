@@ -5,6 +5,7 @@ class_name PaintManager extends Node2D
 @export var canvas : PaintableSurface
 @export var viewport_mask : SubViewport
 @export var brush_prefab : PackedScene
+@export var goal_image : Sprite2D
 
 var tapes : Array[Tape]
 var brushes : Array[PaintBrush]
@@ -32,6 +33,7 @@ func load_level(leveldata):
 		brush.on_paint.connect(canvas.paint)
 		brush.on_destroy.connect(on_brush_end)
 		brush.initialize(leveldata.paths[i], leveldata.brushes[i])
+	goal_image.texture = leveldata.goal
 		
 func on_brush_end(brush):
 	brushes.erase(brush)
