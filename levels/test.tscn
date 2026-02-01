@@ -14,19 +14,20 @@
 script = ExtResource("1_u45fp")
 levels = Array[ExtResource("2_qhvcx")]([ExtResource("3_kqvnf")])
 
+[node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask", "goal_image", "brush_container")]
+script = ExtResource("1_pnvjf")
+canvas = NodePath("../SubViewportContainer/MainViewport/Canvas")
+viewport_mask = NodePath("../SubViewportContainer/MaskingViewport")
+brush_prefab = ExtResource("6_6g8e2")
+goal_image = NodePath("../SubViewportContainer/MainViewport/GoalImage")
+brush_container = NodePath("../SubViewportContainer/BrushViewport")
+
 [node name="PlayerController" type="Node2D" parent="." unique_id=937662677 node_paths=PackedStringArray("tape_container", "paint_manager")]
 position = Vector2(704, 284)
 script = ExtResource("2_lkjt4")
 tape_prefab = ExtResource("3_ny0t1")
 tape_container = NodePath("../SubViewportContainer/MaskingViewport/TapeContainer")
 paint_manager = NodePath("../PaintManager")
-
-[node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask", "goal_image")]
-script = ExtResource("1_pnvjf")
-canvas = NodePath("../SubViewportContainer/MainViewport/Canvas")
-viewport_mask = NodePath("../SubViewportContainer/MaskingViewport")
-brush_prefab = ExtResource("6_6g8e2")
-goal_image = NodePath("../SubViewportContainer/MainViewport/GoalImage")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=438805184]
 anchors_preset = 15
@@ -65,5 +66,11 @@ visibility_layer = 3
 
 [node name="TapeContainer" type="Node2D" parent="SubViewportContainer/MaskingViewport" unique_id=282103972]
 visibility_layer = 3
+
+[node name="BrushViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2121902779]
+transparent_bg = true
+handle_input_locally = false
+canvas_cull_mask = 4293918724
+render_target_update_mode = 4
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1952142637]

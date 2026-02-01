@@ -6,6 +6,7 @@ class_name PaintManager extends Node2D
 @export var viewport_mask : SubViewport
 @export var brush_prefab : PackedScene
 @export var goal_image : Sprite2D
+@export var brush_container : Node
 
 var tapes : Array[Tape]
 var brushes : Array[PaintBrush]
@@ -28,7 +29,7 @@ func _input(event):
 func load_level(leveldata):
 	for i in leveldata.brushes.size():
 		var brush = brush_prefab.instantiate() as PaintBrush
-		canvas.add_child(brush)
+		brush_container.add_child(brush)
 		brushes.push_front(brush)
 		brush.on_paint.connect(canvas.paint)
 		brush.on_destroy.connect(on_brush_end)
@@ -50,6 +51,9 @@ func on_remove_tape(tape: Tape):
 	recalculate_mask()
 
 func recalculate_mask():
+	RenderingServer.frame_post_draw.connect(get_mask)
+	
+func get_mask():
 	var mask = viewport_mask.get_texture().get_image()
 	for y in range(mask.get_height()):
 		for x in range(mask.get_width()):
@@ -64,4 +68,5 @@ func recalculate_mask():
 	
 	#var save_path = "C:/Users/mppro/Documents/Projects/ggj2026/test_mask.png"
 	#var error = mask.save_png(save_path)
-	print("set mask")
+	print("set mask")	
+	RenderingServer.frame_post_draw.disconnect(get_mask)

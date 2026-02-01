@@ -6,7 +6,10 @@ signal on_destroy
 @onready var button : Button = $Button
 
 func _ready():
-	pass#button.position = Vector2.DOWN * line.width
+	pass
+	# not sure why below doesn't work
+	#button.position = Vector2.DOWN * line.width / 2
+	#button.pivot_offset = Vector2.UP * line.width / 2
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
