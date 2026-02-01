@@ -63,6 +63,7 @@ func restart_game():
 	var freemode_panel = $SubViewportContainer/UI/FreeMode
 	freemode_panel.visible = false
 	
+	overall_score = 0
 	level_idx = 0
 	close_end_screen()
 	start_next_level()

@@ -10,6 +10,7 @@ func _ready():
 	# not sure why below doesn't work
 	#button.position = Vector2.DOWN * line.width / 2
 	#button.pivot_offset = Vector2.UP * line.width / 2
+	# start looping audio
 
 func length():
 	return line.points[0].distance_to(line.points[1])	
@@ -23,6 +24,7 @@ func update_shape(endpoint):
 	button.rotation = angle
 
 func killme():
+	# crumple audio
 	on_destroy.emit(self)
 	queue_free()
 

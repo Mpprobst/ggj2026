@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnieuv4tyuodq"]
 
 [ext_resource type="Script" uid="uid://bf8ykw7gmoo67" path="res://scripts/tape.gd" id="1_7wm2w"]
+[ext_resource type="AudioStream" uid="uid://yo5wmv56360g" path="res://audio/pull2.mp3" id="2_idvsi"]
 
 [node name="Tape" type="Node2D" unique_id=807806537]
 visibility_layer = 3
@@ -24,5 +25,9 @@ grow_vertical = 2
 rotation = 0.40491638
 pivot_offset = Vector2(0, 32)
 button_mask = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1241226621]
+stream = ExtResource("2_idvsi")
+parameters/looping = false
 
 [connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
