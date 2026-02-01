@@ -5,11 +5,16 @@ class_name PaintManager extends Node2D
 @export var brush_prefab : PackedScene
 @export var goal_image : Sprite2D
 @export var brush_container : Node
+@export var tape_reminder : Label 
+var tape_reminder_tween : Tween
 
 signal level_complete
 
 var tapes : Array[Tape]
 var brushes : Array[PaintBrush]
+
+var freedraw : bool
+var brush_down : bool
 
 func load_level(leveldata):
 	for i in leveldata.brushes.size():
@@ -18,9 +23,15 @@ func load_level(leveldata):
 		brushes.push_front(brush)
 		brush.on_paint.connect(canvas.paint)
 		brush.on_destroy.connect(on_brush_end)
-		brush.initialize(leveldata.paths[i], leveldata.brushes[i])
+		brush.initialize(leveldata.paths[i], leveldata.brushes[i], leveldata.delays[i])
 	goal_image.texture = leveldata.goal
 	canvas.clear_canvas()
+	for tape in tapes:
+		tape.queue_free()
+	tapes = []
+	tape_reminder.visible = false
+	if tape_reminder_tween != null:
+		tape_reminder_tween.queue_free()
 	recalculate_mask()
 		
 func on_brush_end(brush):
@@ -29,7 +40,13 @@ func on_brush_end(brush):
 		if tapes.size() == 0:
 			calculate_score()
 		else:
-			print("please peel the tape")
+			tape_reminder.visible = true
+			tape_reminder.modulate.a = 0
+			tape_reminder_tween = create_tween()
+			tape_reminder_tween.set_loops(-1)
+			tape_reminder_tween.tween_property(tape_reminder, "modulate:a", 1.0, 1).set_trans(Tween.TRANS_CIRC)
+			tape_reminder_tween.tween_property(tape_reminder, "modulate:a", 0, 1).set_trans(Tween.TRANS_CIRC)
+
 			
 func on_add_tape(tape: Tape):
 	tape.on_destroy.connect(on_remove_tape)
@@ -41,7 +58,6 @@ func on_remove_tape(tape: Tape):
 	if brushes.size() > 0:
 		recalculate_mask()
 	elif tapes.size() <= 0:
-		print("finish")
 		calculate_score()
 
 func recalculate_mask():
@@ -80,3 +96,14 @@ func calculate_score():
 	var goal_ct = raw.get_width() * raw.get_height()
 	var percent = float(ct) / float(goal_ct) * 100.0
 	level_complete.emit(percent)
+	tape_reminder.visible = false
+
+func _input(event):
+	if freedraw:
+		if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE :
+			brush_down = event.pressed
+		
+		if event is InputEventMouseMotion and brush_down:
+			var pos = get_global_mouse_position()
+			var size = Vector2(32, 32)
+			canvas.paint_at_world_pos(pos, size, Color.RED)

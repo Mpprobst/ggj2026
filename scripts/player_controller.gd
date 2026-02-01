@@ -4,6 +4,7 @@ extends Node2D
 @export var tape_container : Node2D
 @export var paint_manager : PaintManager
 
+var can_draw : bool
 var drawing : bool
 var active_tape : Tape
 
@@ -13,7 +14,7 @@ func _process(delta):
 		active_tape.update_shape(get_global_mouse_position())
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+	if can_draw and event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed and not drawing:
 			var pos = get_global_mouse_position()
 			active_tape = tape_prefab.instantiate()
@@ -21,6 +22,7 @@ func _input(event):
 			active_tape.global_position = pos
 			drawing = true
 		else:
-			paint_manager.on_add_tape(active_tape)
+			if active_tape != null:
+				paint_manager.on_add_tape(active_tape)
 			drawing = false
 	

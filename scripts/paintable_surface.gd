@@ -14,10 +14,10 @@ func _ready():
 func clear_canvas():
 	img = Image.create(GRID_SIZE, GRID_SIZE, false, Image.FORMAT_RGBA8)
 	painted_tex.texture = ImageTexture.create_from_image(img)
-	paint(Rect2(0, 0, 8, 8), Color.RED)
-	paint(Rect2(GRID_SIZE-8, 0, 8, 8), Color.RED)
-	paint(Rect2(0, GRID_SIZE-8, 8, 8), Color.RED)
-	paint(Rect2(GRID_SIZE-8, GRID_SIZE-8, 8, 8), Color.RED)
+	#paint(Rect2(0, 0, 8, 8), Color.RED)
+	#paint(Rect2(GRID_SIZE-8, 0, 8, 8), Color.RED)
+	#paint(Rect2(0, GRID_SIZE-8, 8, 8), Color.RED)
+	#paint(Rect2(GRID_SIZE-8, GRID_SIZE-8, 8, 8), Color.RED)
 	
 func paint_at_world_pos(world_pos, size, color):
 	var offset = (Vector2.ONE * GRID_SIZE - size) / 2

@@ -1,0 +1,23 @@
+[gd_resource type="Theme" format=3 uid="uid://dawi8gv76fssm"]
+
+[ext_resource type="FontFile" uid="uid://8ten2i6jowvk" path="res://fonts/Paintbrush.ttf" id="1_e1x85"]
+
+[resource]
+default_base_scale = 1.0
+default_font = ExtResource("1_e1x85")
+default_font_size = 32
+/colors/tapeblue = Color(0.18039216, 0.3137255, 0.61960787, 1)
+/colors/textcolor = Color(0, 0, 0, 1)
+/fonts/font = ExtResource("1_e1x85")
+/styles/textcolor = null
+Button/colors/font_color = Color(0.18039216, 0.31764707, 0.62352943, 1)
+Button/colors/font_hover_color = Color(0.33333334, 0.49803922, 0.8509804, 1)
+Button/colors/font_hover_pressed_color = Color(0.104813345, 0.20173544, 0.4189959, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Label/colors/font_color = Color(0.18039216, 0.31764707, 0.62352943, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0.5176471)
+LinkButton/colors/font_color = Color(0.18039216, 0.31764707, 0.62352943, 1)
+LinkButton/colors/font_hover_color = Color(0.33333334, 0.49803922, 0.8509804, 1)
+LinkButton/colors/font_pressed_color = Color(0.09619721, 0.18806687, 0.3940608, 1)

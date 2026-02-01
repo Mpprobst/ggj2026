@@ -9,18 +9,20 @@
 [ext_resource type="Resource" uid="uid://bk4r6io7ovx87" path="res://data/level0.tres" id="3_kqvnf"]
 [ext_resource type="PackedScene" uid="uid://dnieuv4tyuodq" path="res://prefabs/tape.tscn" id="3_ny0t1"]
 [ext_resource type="PackedScene" uid="uid://c16xye7x8xw1m" path="res://prefabs/paint_brush.tscn" id="6_6g8e2"]
+[ext_resource type="Theme" uid="uid://dawi8gv76fssm" path="res://theme.tres" id="10_kqvnf"]
 
 [node name="Test" type="Node2D" unique_id=1559331907]
 script = ExtResource("1_u45fp")
 levels = Array[ExtResource("2_qhvcx")]([ExtResource("3_kqvnf")])
 
-[node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask", "goal_image", "brush_container")]
+[node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask", "goal_image", "brush_container", "tape_reminder")]
 script = ExtResource("1_pnvjf")
 canvas = NodePath("../SubViewportContainer/MainViewport/Canvas")
 viewport_mask = NodePath("../SubViewportContainer/MaskingViewport")
 brush_prefab = ExtResource("6_6g8e2")
 goal_image = NodePath("../SubViewportContainer/MainViewport/GoalImage")
 brush_container = NodePath("../SubViewportContainer/BrushViewport")
+tape_reminder = NodePath("../SubViewportContainer/UI/RemoveTape")
 
 [node name="PlayerController" type="Node2D" parent="." unique_id=937662677 node_paths=PackedStringArray("tape_container", "paint_manager")]
 position = Vector2(704, 284)
@@ -73,4 +75,203 @@ handle_input_locally = false
 canvas_cull_mask = 4293918724
 render_target_update_mode = 4
 
+[node name="UI" type="CanvasLayer" parent="SubViewportContainer" unique_id=969009558]
+
+[node name="Start Game" type="VBoxContainer" parent="SubViewportContainer/UI" unique_id=1644604352]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -178.5
+offset_bottom = 178.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="SubViewportContainer/UI/Start Game" unique_id=1215758625]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_font_sizes/font_size = 96
+text = "Masky 
+wasky"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="credit" type="Label" parent="SubViewportContainer/UI/Start Game" unique_id=744337611]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(0.33333334, 0.49803922, 0.8509804, 1)
+text = "a game about tape"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="SubViewportContainer/UI/Start Game" unique_id=213451237]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "play"
+
+[node name="controls" type="Label" parent="SubViewportContainer/UI/Start Game" unique_id=261041740]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_font_sizes/font_size = 28
+text = "controls:
+- left mouse (drag): draw tape
+- right mouse : peel tape"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="controls2" type="Label" parent="SubViewportContainer/UI/Start Game" unique_id=1981293740]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(0.33333334, 0.49803922, 0.8509804, 1)
+theme_override_font_sizes/font_size = 28
+text = "
+make sure the wall is 
+painted the right color!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="VBoxContainer" parent="SubViewportContainer/UI" unique_id=1900543964]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -168.0
+grow_horizontal = 2
+
+[node name="Title" type="Label" parent="SubViewportContainer/UI/Score" unique_id=2052109115]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 96
+text = "100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Next" type="Button" parent="SubViewportContainer/UI/Score" unique_id=624621334]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 64
+text = "next"
+
+[node name="GameOver" type="VBoxContainer" parent="SubViewportContainer/UI" unique_id=975166506]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -512.0
+offset_bottom = -146.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
+
+[node name="Title" type="Label" parent="SubViewportContainer/UI/GameOver" unique_id=117594832]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/font_size = 64
+text = "Thanks for 
+playing!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="SubViewportContainer/UI/GameOver" unique_id=859891673]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(2.9841065e-06, 0.6147842, 0.31475973, 1)
+theme_override_font_sizes/font_size = 72
+text = "score: 100%"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewportContainer/UI/GameOver" unique_id=460553265]
+layout_mode = 2
+theme_override_constants/separation = 28
+
+[node name="Next" type="Button" parent="SubViewportContainer/UI/GameOver/HBoxContainer" unique_id=1018956759]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 50
+text = "restart"
+
+[node name="Freemode" type="Button" parent="SubViewportContainer/UI/GameOver/HBoxContainer" unique_id=1475407000]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_font_sizes/font_size = 50
+text = "freemode"
+
+[node name="Title2" type="Label" parent="SubViewportContainer/UI/GameOver" unique_id=1472416109]
+visibility_layer = 7
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(0.33333334, 0.49803922, 0.8509804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+text = "made by 
+Michel Probst"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="SubViewportContainer/UI/GameOver" unique_id=747170144]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_font_sizes/font_size = 48
+text = "more of my games!"
+uri = "https://damieba.itch.io/the-magic-bookstore"
+
+[node name="FreeMode" type="HBoxContainer" parent="SubViewportContainer/UI" unique_id=88649210]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.5
+offset_top = -37.0
+offset_right = 1.5
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 4
+
+[node name="Clear" type="Button" parent="SubViewportContainer/UI/FreeMode" unique_id=1141530665]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+text = "erase"
+
+[node name="Instruction" type="Label" parent="SubViewportContainer/UI/FreeMode" unique_id=1660885375]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_font_sizes/font_size = 30
+text = "middle mouse: paint"
+
+[node name="Exit" type="Button" parent="SubViewportContainer/UI/FreeMode" unique_id=535614494]
+layout_mode = 2
+theme = ExtResource("10_kqvnf")
+theme_override_colors/font_color = Color(0.9647059, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.75338984, 2.382472e-06, 5.7756904e-07, 1)
+text = "quit"
+
+[node name="RemoveTape" type="Label" parent="SubViewportContainer/UI" unique_id=637581359]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 29.0
+grow_horizontal = 2
+theme = ExtResource("10_kqvnf")
+text = "remove tape (right mouse)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1952142637]
+
+[connection signal="pressed" from="SubViewportContainer/UI/Start Game/StartButton" to="." method="start_game"]
+[connection signal="pressed" from="SubViewportContainer/UI/Score/Next" to="." method="start_next_level"]
+[connection signal="pressed" from="SubViewportContainer/UI/GameOver/HBoxContainer/Next" to="." method="restart_game"]
+[connection signal="pressed" from="SubViewportContainer/UI/GameOver/HBoxContainer/Freemode" to="." method="freemode"]
+[connection signal="pressed" from="SubViewportContainer/UI/FreeMode/Clear" to="SubViewportContainer/MainViewport/Canvas" method="clear_canvas"]
+[connection signal="pressed" from="SubViewportContainer/UI/FreeMode/Exit" to="." method="restart_game"]
