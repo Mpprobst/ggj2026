@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="BrushData" format=3 uid="uid://doeauob6f1nct"]
+
+[ext_resource type="Script" uid="uid://bs753kce3wybo" path="res://scripts/brush_data.gd" id="2_0ehju"]
+
+[resource]
+script = ExtResource("2_0ehju")
+speed = 128.0
+color = Color(1, 0, 0, 1)
+width = 128.0
+metadata/_custom_type_script = "uid://bs753kce3wybo"

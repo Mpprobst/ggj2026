@@ -27,7 +27,7 @@ func paint_at_world_pos(world_pos, size, color):
 func paint(rect : Rect2, color):
 	var x = rect.size.x
 	var y = rect.size.y
-	
+	print("paint at: " + str(rect))
 	for i in range(rect.size.x):
 		for j in range(rect.size.y):
 			x = rect.position.x + i

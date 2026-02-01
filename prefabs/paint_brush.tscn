@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c16xye7x8xw1m"]
+
+[ext_resource type="Script" uid="uid://3ulun3vecq2k" path="res://scripts/paint_brush.gd" id="1_sm213"]
+[ext_resource type="Texture2D" uid="uid://d0vbnqjo0dqt8" path="res://icon.svg" id="2_r4uij"]
+
+[node name="PaintBrush" type="Node2D" unique_id=1624143853]
+script = ExtResource("1_sm213")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1838941291]
+texture = ExtResource("2_r4uij")
+offset = Vector2(-64, 64)

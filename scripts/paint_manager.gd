@@ -4,8 +4,10 @@ class_name PaintManager extends Node2D
 
 @export var canvas : PaintableSurface
 @export var viewport_mask : SubViewport
+@export var brush_prefab : PackedScene
 
 var tapes : Array[Tape]
+var brushes : Array[PaintBrush]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,6 +22,21 @@ func _input(event):
 		var pos = get_global_mouse_position()
 		var size = Vector2(32, 32)
 		canvas.paint_at_world_pos(pos, size, Color.RED)
+		
+# TODO: load level file. spawn brush nodes
+func load_level(leveldata):
+	for i in leveldata.brushes.size():
+		var brush = brush_prefab.instantiate() as PaintBrush
+		canvas.add_child(brush)
+		brushes.push_front(brush)
+		brush.on_paint.connect(canvas.paint)
+		brush.on_destroy.connect(on_brush_end)
+		brush.initialize(leveldata.paths[i], leveldata.brushes[i])
+		
+func on_brush_end(brush):
+	brushes.erase(brush)
+	if brushes.size() <= 0:
+		print("level complete!")
 		
 func on_add_tape(tape: Tape):
 	tape.on_destroy.connect(on_remove_tape)
