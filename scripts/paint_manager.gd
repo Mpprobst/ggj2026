@@ -82,6 +82,9 @@ func get_mask():
 	RenderingServer.frame_post_draw.disconnect(get_mask)
 	
 func calculate_score():
+	if freedraw:
+		return
+		
 	var ct = 0
 	var raw = goal_image.texture.get_image()
 	for x in canvas.img.get_width():

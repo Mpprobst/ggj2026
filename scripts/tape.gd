@@ -11,11 +11,9 @@ func _ready():
 	#button.position = Vector2.DOWN * line.width / 2
 	#button.pivot_offset = Vector2.UP * line.width / 2
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
-# TODO: redraw the polygon collision so it may be selected
+func length():
+	return line.points[0].distance_to(line.points[1])	
+
 func update_shape(endpoint):
 	line.points[1] = endpoint - global_position
 	var dir = line.points[1] - line.points[0]

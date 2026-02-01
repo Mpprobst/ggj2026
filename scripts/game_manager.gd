@@ -55,7 +55,7 @@ func start_next_level():
 func start_game():
 	var tween = create_tween()
 	var game_container = $"SubViewportContainer/UI/Start Game"
-	tween.tween_property(game_container, "position", Vector2(0, -game_container.size.y), 1).set_trans(Tween.TRANS_SPRING)
+	tween.tween_property(game_container, "position", Vector2(0, -512), 1).set_trans(Tween.TRANS_SPRING)
 	start_next_level()
 	
 func restart_game():
