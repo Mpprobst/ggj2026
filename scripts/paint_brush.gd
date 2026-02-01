@@ -26,8 +26,8 @@ func initialize(_path : BrushPath, data : BrushData):
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var dir = (path[path_idx] - path[path_idx-1]).normalized()
-	global_position = (global_position + dir * delta * speed).clamp(Vector2.ZERO, Vector2.ONE * (512+width))
+	var dir = path[path_idx] - path[path_idx-1]
+	global_position = (global_position + dir.normalized() * delta * speed).clamp(Vector2.ZERO, Vector2.ONE * (512+width))
 	var lastdir = global_position - last_pos
 	var pixels = ceil(lastdir.length()) + 1
 	var go_next = global_position.distance_to(path[path_idx]) < 1
@@ -37,9 +37,8 @@ func _process(delta):
 		var rect = Rect2(draw_pos, Vector2.ONE * width)
 		on_paint.emit(rect, color)
 		
-	# if at the path idx, go to next
-	#print(global_position)
-	if global_position.distance_to(path[path_idx]) < 1:
+	var startdir = global_position - path[path_idx-1]
+	if startdir.length() >= dir.length():
 		path_idx = path_idx + 1
 		if path_idx >= path.size():
 			print("end of path")
