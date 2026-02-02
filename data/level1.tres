@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://cjtps21w5ey0u"]
+
+[ext_resource type="Script" uid="uid://bs753kce3wybo" path="res://scripts/brush_data.gd" id="1_kcstu"]
+[ext_resource type="Resource" uid="uid://doeauob6f1nct" path="res://data/brushes/brush_slow_red_128.tres" id="2_wws3t"]
+[ext_resource type="Texture2D" uid="uid://36fxf1i4ppr6" path="res://sprites/level1.png" id="3_kcstu"]
+[ext_resource type="Script" uid="uid://qjvhyw112rxr" path="res://scripts/brush_path.gd" id="4_4tgsj"]
+[ext_resource type="Resource" uid="uid://cbgqq7y7fh2oi" path="res://data/paths/snakehoriz.tres" id="5_hu7je"]
+[ext_resource type="Script" uid="uid://78n3gl4f5ex4" path="res://scripts/level_data.gd" id="6_miyb0"]
+
+[resource]
+script = ExtResource("6_miyb0")
+goal = ExtResource("3_kcstu")
+brushes = Array[ExtResource("1_kcstu")]([ExtResource("2_wws3t")])
+paths = Array[ExtResource("4_4tgsj")]([ExtResource("5_hu7je")])
+delays = Array[float]([1.0])
+goal_score = 88.0
+metadata/_custom_type_script = "uid://78n3gl4f5ex4"

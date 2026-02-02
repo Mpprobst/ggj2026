@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="BrushPath" format=3 uid="uid://bn717a8tlgno8"]
+
+[ext_resource type="Script" uid="uid://qjvhyw112rxr" path="res://scripts/brush_path.gd" id="1_cwgqs"]
+
+[resource]
+script = ExtResource("1_cwgqs")
+path = Array[Vector2]([Vector2(0, 0), Vector2(512, 0), Vector2(512, 512)])
+metadata/_custom_type_script = "uid://qjvhyw112rxr"

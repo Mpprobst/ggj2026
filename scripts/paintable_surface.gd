@@ -46,7 +46,9 @@ func paint(rect : Rect2, color, border : bool = false):
 				var tint = Color.WHITE
 				if mask != null:
 					tint = mask.get_pixel(x,y)
-				img.set_pixel(x, y, color * tint)
+				# only write if there is color
+				if tint == Color.WHITE:	
+					img.set_pixel(x, y, color * tint)
 				
 	painted_tex.texture.update(img)
 	

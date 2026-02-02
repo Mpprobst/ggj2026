@@ -15,6 +15,7 @@ var brushes : Array[PaintBrush]
 
 var freedraw : bool
 var brush_down : bool
+var brush_radius : float = 32
 
 func load_level(leveldata):
 	for i in leveldata.brushes.size():
@@ -31,7 +32,7 @@ func load_level(leveldata):
 	tapes = []
 	tape_reminder.visible = false
 	if tape_reminder_tween != null:
-		tape_reminder_tween.queue_free()
+		tape_reminder_tween.kill()
 	recalculate_mask()
 		
 func on_brush_end(brush):
@@ -55,9 +56,8 @@ func on_add_tape(tape: Tape):
 	
 func on_remove_tape(tape: Tape):
 	tapes.erase(tape)
-	if brushes.size() > 0:
-		recalculate_mask()
-	elif tapes.size() <= 0:
+	recalculate_mask()
+	if tapes.size() <= 0 and brushes.size() <= 0:
 		calculate_score()
 
 func recalculate_mask():
@@ -108,5 +108,11 @@ func _input(event):
 		
 		if event is InputEventMouseMotion and brush_down:
 			var pos = get_global_mouse_position()
-			var size = Vector2(32, 32)
+			var size = Vector2(brush_radius, brush_radius)
 			canvas.paint_at_world_pos(pos, size, Color.RED)
+			
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			brush_radius = clamp(brush_radius + 2, 4, 128)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			brush_radius = clamp(brush_radius - 2, 4, 128)

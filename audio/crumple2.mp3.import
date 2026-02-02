@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/crumple2.mp3-404694f13f44b9bd1a5f01770295d038
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bnbfwlyb4h7rq"]
+
+[ext_resource type="Script" uid="uid://bs753kce3wybo" path="res://scripts/brush_data.gd" id="1_t2gu4"]
+[ext_resource type="Resource" uid="uid://doeauob6f1nct" path="res://data/brushes/brush_slow_red_128.tres" id="2_8bi5y"]
+[ext_resource type="Resource" uid="uid://csfbgun1c4rkb" path="res://data/brushes/brush_slow_blue_128.tres" id="3_60r55"]
+[ext_resource type="Texture2D" uid="uid://0yjyri5cdjer" path="res://sprites/level2.png" id="4_ctil4"]
+[ext_resource type="Script" uid="uid://qjvhyw112rxr" path="res://scripts/brush_path.gd" id="4_f3vt3"]
+[ext_resource type="Resource" uid="uid://bn717a8tlgno8" path="res://data/paths/right_down.tres" id="6_60r55"]
+[ext_resource type="Script" uid="uid://78n3gl4f5ex4" path="res://scripts/level_data.gd" id="6_8747k"]
+[ext_resource type="Resource" uid="uid://dooq5xnwui1ct" path="res://data/paths/left_up.tres" id="7_60r55"]
+
+[resource]
+script = ExtResource("6_8747k")
+goal = ExtResource("4_ctil4")
+brushes = Array[ExtResource("1_t2gu4")]([ExtResource("2_8bi5y"), ExtResource("3_60r55")])
+paths = Array[ExtResource("4_f3vt3")]([ExtResource("6_60r55"), ExtResource("7_60r55")])
+delays = Array[float]([1.0, 3.0])
+goal_score = 92.0
+metadata/_custom_type_script = "uid://78n3gl4f5ex4"

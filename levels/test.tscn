@@ -8,12 +8,15 @@
 [ext_resource type="Script" uid="uid://1j2uf2jfdflt" path="res://scripts/paintable_surface.gd" id="2_r4e4k"]
 [ext_resource type="Resource" uid="uid://bk4r6io7ovx87" path="res://data/level0.tres" id="3_kqvnf"]
 [ext_resource type="PackedScene" uid="uid://dnieuv4tyuodq" path="res://prefabs/tape.tscn" id="3_ny0t1"]
+[ext_resource type="Resource" uid="uid://cjtps21w5ey0u" path="res://data/level1.tres" id="4_qtvpr"]
+[ext_resource type="Resource" uid="uid://bnbfwlyb4h7rq" path="res://data/level2.tres" id="5_drwxn"]
 [ext_resource type="PackedScene" uid="uid://c16xye7x8xw1m" path="res://prefabs/paint_brush.tscn" id="6_6g8e2"]
 [ext_resource type="Theme" uid="uid://dawi8gv76fssm" path="res://theme.tres" id="10_kqvnf"]
+[ext_resource type="AudioStream" uid="uid://djl21tcjrobum" path="res://audio/2021-07-07_-_Smooth_Rumble_-_www.FesliyanStudios.com.mp3" id="11_eudka"]
 
 [node name="Test" type="Node2D" unique_id=1559331907]
 script = ExtResource("1_u45fp")
-levels = Array[ExtResource("2_qhvcx")]([ExtResource("3_kqvnf")])
+levels = Array[ExtResource("2_qhvcx")]([ExtResource("3_kqvnf"), ExtResource("4_qtvpr"), ExtResource("5_drwxn")])
 
 [node name="PaintManager" type="Node2D" parent="." unique_id=738972919 node_paths=PackedStringArray("canvas", "viewport_mask", "goal_image", "brush_container", "tape_reminder")]
 script = ExtResource("1_pnvjf")
@@ -60,6 +63,7 @@ painted_tex = NodePath(".")
 [node name="MaskingViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1301670002]
 transparent_bg = true
 handle_input_locally = false
+audio_listener_enable_2d = true
 canvas_cull_mask = 4293918722
 render_target_update_mode = 4
 
@@ -260,7 +264,8 @@ text = "quit"
 visible = false
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 29.0
+offset_top = 32.0
+offset_bottom = 61.000004
 grow_horizontal = 2
 theme = ExtResource("10_kqvnf")
 text = "remove tape (right mouse)"
@@ -268,6 +273,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MainCamera" type="Camera2D" parent="." unique_id=1952142637]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="." unique_id=1426339059]
+stream = ExtResource("11_eudka")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="pressed" from="SubViewportContainer/UI/Start Game/StartButton" to="." method="start_game"]
 [connection signal="pressed" from="SubViewportContainer/UI/Score/Next" to="." method="start_next_level"]
